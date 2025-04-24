@@ -6,10 +6,10 @@ from tabpfn import TabPFNRegressor
 
 def main():
     # Load data, tabpfn can't train (officially) on more than 10k examples
-    X_train = pd.read_pickle('pd_splits/x_train.pkl')[:10000]
-    X_test = pd.read_pickle('pd_splits/x_test.pkl')
-    y_train = pd.read_pickle('pd_splits/y_train.pkl')[:10000]
-    y_test = pd.read_pickle('pd_splits/y_test.pkl')
+    X_train = pd.read_pickle('pd_splits_2404/x_train.pkl')[:10000]
+    X_test = pd.read_pickle('pd_splits_2404/x_test.pkl')
+    y_train = pd.read_pickle('pd_splits_2404/y_train.pkl')[:10000]
+    y_test = pd.read_pickle('pd_splits_2404/y_test.pkl')
 
     print(len(X_train), len(y_train), len(X_test), len(y_test))
 
@@ -28,7 +28,7 @@ def main():
     mse = mean_squared_error(y_test, predictions)
     r2 = r2_score(y_test, predictions)
 
-    print("Mean Squared Error (MSE):", mse)
+    print("Root Mean Squared Error (RMSE):", mse**0.5)
     print("R² Score:", r2)
 
 
