@@ -6,10 +6,10 @@ from tabpfn import TabPFNRegressor
 
 def main():
     # Load data, tabpfn can't train (officially) on more than 10k examples
-    X_train = pd.read_pickle('pd_splits_2404/x_train.pkl')[:10000]
-    X_test = pd.read_pickle('pd_splits_2404/x_test.pkl')
-    y_train = pd.read_pickle('pd_splits_2404/y_train.pkl')[:10000]
-    y_test = pd.read_pickle('pd_splits_2404/y_test.pkl')
+    X_train = pd.read_pickle('pd_splits_0105/x_train_mosc.pkl')[:10000]
+    X_test = pd.read_pickle('pd_splits_0105/x_test_mosc.pkl')
+    y_train = pd.read_pickle('pd_splits_0105/y_train_mosc.pkl')[:10000]
+    y_test = pd.read_pickle('pd_splits_0105/y_test_mosc.pkl')
 
     print(len(X_train), len(y_train), len(X_test), len(y_test))
 
