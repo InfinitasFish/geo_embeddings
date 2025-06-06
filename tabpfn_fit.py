@@ -6,18 +6,23 @@ from tabpfn import TabPFNRegressor
 
 def main():
     # Load data, tabpfn can't train (officially) on more than 10k examples
-    X_train = pd.read_pickle('pd_splits_0105/x_train_mosc.pkl')[:10000]
-    X_test = pd.read_pickle('pd_splits_0105/x_test_mosc.pkl')
-    y_train = pd.read_pickle('pd_splits_0105/y_train_mosc.pkl')[:10000]
-    y_test = pd.read_pickle('pd_splits_0105/y_test_mosc.pkl')
+    X_train = pd.read_pickle('pd_splits_0606/x_train_big_mosc_0506.pkl')#[:10000]
+    X_test = pd.read_pickle('pd_splits_0606/x_test_big_mosc_0506.pkl')
+    y_train = pd.read_pickle('pd_splits_0606/y_train_big_mosc_0506.pkl')#[:10000]
+    y_test = pd.read_pickle('pd_splits_0606/y_test_big_mosc_0506.pkl')
 
     print(len(X_train), len(y_train), len(X_test), len(y_test))
 
     # Initialize the regressor
-    regressor = TabPFNRegressor()
+    regressor = TabPFNRegressor(ignore_pretraining_limits=True)
     print('Fit started')
     regressor.fit(X_train, y_train)
     print('Fit completed')
+
+    # Getting embeddings of input
+    print('Embeddings calculation')
+    embs = regressor.get_embeddings(X_test)
+    print(len(X_test), type(embs), embs.shape)  # 3107 -> (8, 3107, 192)
 
     # Predict on the test set
     print('Predictions started')
@@ -28,7 +33,7 @@ def main():
     mse = mean_squared_error(y_test, predictions)
     r2 = r2_score(y_test, predictions)
 
-    print("Root Mean Squared Error (RMSE):", mse**0.5)
+    print("Root Mean Squared Error (RMSE):", mse**0.5)  # 7525977.
     print("R² Score:", r2)
 
 
