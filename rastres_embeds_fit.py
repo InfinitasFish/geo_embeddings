@@ -42,6 +42,12 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(X_full, y_full, test_size=0.15, random_state=59)
     print(len(X_train), len(X_test), len(y_train), len(y_test))
 
+    prefix = '_wrastr_embeds'
+    X_train.to_pickle(f'x_train{prefix}.pkl')
+    pd.DataFrame({'price': y_train}).to_pickle(f'y_train{prefix}.pkl')
+    X_test.to_pickle(f'x_test{prefix}.pkl')
+    pd.DataFrame({'price': y_test}).to_pickle(f'y_test{prefix}.pkl')
+
     model = CatBoostRegressor(ignored_features=['index', 'level_0'])
     model.fit(X_train, y_train, verbose=100)
 
