@@ -49,10 +49,10 @@ def main():
     # X_test.to_pickle(f'x_test{prefix}.pkl')
     # pd.DataFrame({'price': y_test}).to_pickle(f'y_test{prefix}.pkl')
 
-    cv = StratifiedKFold(n_splits=7, shuffle=True, random_state=59)
+    cv = StratifiedKFold(n_splits=10, shuffle=True, random_state=59)
     scoring = {
         'neg_mse': 'neg_mean_squared_error',
-        'r2': 'r2',
+        #'r2': 'r2',
     }
 
     model = CatBoostRegressor(ignored_features=['index', 'level_0'], verbose=500)
