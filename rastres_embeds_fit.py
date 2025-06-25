@@ -49,16 +49,37 @@ def main():
     # X_test.to_pickle(f'x_test{prefix}.pkl')
     # pd.DataFrame({'price': y_test}).to_pickle(f'y_test{prefix}.pkl')
 
-    model = CatBoostRegressor(ignored_features=['index', 'level_0'])
-    model.fit(X_train, y_train, verbose=100)
+    cv = StratifiedKFold(n_splits=7, shuffle=True, random_state=59)
+    scoring = {
+        'neg_mse': 'neg_mean_squared_error',
+        'r2': 'r2',
+    }
 
-    predictions = model.predict(X_test)
-    mse = mean_squared_error(y_test, predictions)
-    r2 = r2_score(y_test, predictions)
+    model = CatBoostRegressor(ignored_features=['index', 'level_0'], verbose=500)
+    results = {}
+    for metric_name, metric in scoring.items():
+        scores = cross_val_score(
+            model,
+            X_full,
+            y_full,
+            cv=cv,
+            scoring=metric,
+            n_jobs=-1
+        )
+        results[metric_name] = scores
+        print(f"{metric_name}: {np.mean(scores):.4f} (±{np.std(scores):.4f})")
 
-    print('Catboost Msk with Raster Embeds:')
-    print("Root Mean Squared Error (RMSE):", mse ** 0.5)
-    print("R² Score:", r2)
+    # Default fitting
+    # model = CatBoostRegressor(ignored_features=['index', 'level_0'])
+    # model.fit(X_train, y_train, verbose=100)
+    #
+    # predictions = model.predict(X_test)
+    # mse = mean_squared_error(y_test, predictions)
+    # r2 = r2_score(y_test, predictions)
+
+    # print('Catboost Msk with Raster Embeds:')
+    # print("Root Mean Squared Error (RMSE):", mse ** 0.5)
+    # print("R² Score:", r2)
 
 
     # Number of features is too large for TabPfn
