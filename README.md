@@ -26,7 +26,7 @@
 | Moscow (50k)          | 7.386M   | 7.891M       |
 | Saint-Petersburg (30k)| 2.588M   | 2.552M       |
 | Ekaterinburg (10k)    | 1.323M   | 1.218M       |
-| Moscow + municipal    | 4.984M   | 5.781M       |
+| Moscow + municipal    | **5.210M***   | 5.781M       |
 | Saint-Petersburg + mun.| 2.054M   | 2.151M       |
 | Ekaterinburg + mun.   | 0.937M   | 0.931M       |
 
@@ -35,4 +35,4 @@
 | Moscow+mun. (Catboost)| Catboost  |
 |-----------------------|-----------|
 | + tabpfn_emb          | 5.215M    |
-| + rastrs_emb          | 4.867M    |
+| + rastrs_emb          | **4.967M***    |
