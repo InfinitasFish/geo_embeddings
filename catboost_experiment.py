@@ -7,7 +7,6 @@ from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostRegressor
 
 
-
 def main():
     to_take_train_rows = 10000
     X_train = pd.read_pickle('pd_splits/x_train_msk_merged.pkl')[:to_take_train_rows]
