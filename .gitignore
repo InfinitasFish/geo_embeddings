@@ -1,8 +1,10 @@
+.idea/**
+
+catboost_info/**
+
 tp_venv/**
 
 cian_data/**
-
-cianparser/**
 
 map_embeds/**
 
