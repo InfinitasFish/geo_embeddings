@@ -46,7 +46,7 @@ def main():
 
 
         # With Embeddings
-        X_full_invoice_rasters = X_full.drop(emb_cols_1 + flat_cols, axis=1)
+        X_full_invoice_rasters = X_full.drop(emb_cols_2 + flat_cols, axis=1)
         X_train, X_test = X_full_invoice_rasters.iloc[train_index], X_full_invoice_rasters.iloc[test_index]
         y_train, y_test = y_full.iloc[train_index], y_full.iloc[test_index]
 
@@ -60,6 +60,7 @@ def main():
     t_stat, p_value = stats.ttest_rel(all_errors_before, all_errors_after)
     print(f"p-value = {p_value:.8f}")
 
+    # В случае с этими данными - ухудшение статистически значимо)
     if p_value < 0.05:
         print("Улучшение статистически значимо (p < 0.05)")
     else:
