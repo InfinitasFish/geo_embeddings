@@ -90,6 +90,7 @@ def main():
     t_stat, p_value = stats.ttest_rel(errors_before, errors_after)
     print(f"p-value = {p_value:.8f}")
 
+    # В случае с этими данными - ухудшение статистически значимо)
     if p_value < 0.05:
         print("Улучшение статистически значимо (p < 0.05)")
     else:
