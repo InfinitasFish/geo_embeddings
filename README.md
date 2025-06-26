@@ -32,7 +32,16 @@
 
 ## 🌟 Валидация эмбеддингов
 
+* - cross-validation with p-test (95%) applied
 | Moscow+mun. (Catboost)| Catboost  |
 |-----------------------|-----------|
+| no_embs               | 5.210M    |
 | + tabpfn_emb          | 5.215M    |
-| + rastrs_emb          | **4.967M***    |
+| + rastrs_emb          | **4.967M*** |
+
+| Msc_invoices. (Catboost)| Catboost  |
+|-----------------------|-----------|
+| no_embs               | **37.46*** |
+| + tabpfn_emb          | 61.94* |
+| + rastrs_emb          | 63.37* |
+
