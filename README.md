@@ -32,7 +32,8 @@
 
 ## 🌟 Валидация эмбеддингов
 
-* - cross-validation with p-test (95%) applied
+'*' means cross-validation with p-test (95%) applied
+
 | Moscow+mun. (Catboost)| Catboost  |
 |-----------------------|-----------|
 | no_embs               | 5.210M    |
